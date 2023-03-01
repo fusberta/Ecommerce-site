@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { RefObject, useEffect, useRef, useState } from "react"
 import { BiShoppingBag } from "react-icons/bi"
 import { AiOutlineClose } from "react-icons/ai"
 import { Overlay } from "../overlay"
@@ -10,13 +10,29 @@ export function Cart() {
     const [cartOpen, setCartOpen] = useState(false)
     const cartClose = () => {
         setCartOpen(false)
-    }
-
+    }   
+    
     const cartClasses = clsx('fixed top-0 right-0 flex-col justify-start sm:w-1/2 w-full h-screen p-6 bg-white shadow-xl shadow-neutral-200 z-30', {
         'flex': cartOpen,
         'hidden': !cartOpen,
     });
-    
+
+    const divRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (divRef.current && !divRef.current.contains(event.target as Node)) {
+                cartClose()
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+
+    }, [divRef]) 
     return (
         <>
             <div className="relative cursor-pointer mr-6 text-gray-700" onClick={() => setCartOpen(!cartOpen)}>
@@ -26,7 +42,7 @@ export function Cart() {
 
             {cartOpen && <Overlay />}
 
-            <div className={cartClasses}>
+            <div className={cartClasses} ref={divRef}>
                 <div className="flex justify-between items-start">
                     <h2 className="text-2xl font-semibold mb-4">Shopping Cart</h2>
                     <button onClick={cartClose}>
@@ -41,6 +57,7 @@ export function Cart() {
                             name={item.name}
                             price={item.price}
                             quantity={1}
+                            key={item.id}
                         />
                     ))}
                 </div>
