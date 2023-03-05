@@ -1,1 +1,22 @@
-<a href="https://git.io/typing-svg" style='text-align: center;'><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1000&color=F7C92E&center=true&multiline=true&width=605&height=100&lines=Hi+there%2C+my+name+is+Mihail;I+did+this+project+on+practice+in+college;%E2%86%93++%E2%86%93++%E2%86%93" alt="Typing SVG" /></a>
+# Ecommerce-site
+
+#### :star2: Этот проект я начал разрабатывать на учебной практике в колледже.
+#### На данный момент проект в стадии разработки.
+
+![Текущий вид проекта](https://i.postimg.cc/YqSjDj81/Screenshot-1.png "Текущий вид проекта")
+
+## Запуск проекта
+
+Чтобы запустить сайт вам нужно:
+
+1.  Скачать проект.
+2.  Запустить `index.html` в любом современном браузере, или если у вас установлен пакетный менеджер [npm](https://www.npmjs.com/) прописать в консоли `npm start`.
+
+## Чек лист проделанной работы
+
+- [X] Создание дизайна
+- [X] Добавление моковых данных
+- [X] Верстка с использованием `tailwind css` и компонентного подхода
+- [X] Перенос проекта с `javascript` на `typescript`
+- [ ] Создание логики сайта на `Redux, Redux Toolkit`
+- [X] Оформление `Readme.md`
